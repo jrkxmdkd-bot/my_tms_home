@@ -1,5 +1,3 @@
-from random import choice
-
 from HOMEWORK_DB.data_provider import DataProvider
 
 
@@ -30,13 +28,16 @@ class ConsoleDbApp:
 
         while True:
             action_item = int(input(ACTION_ITEMS))
-            #
-            # match action_item:
-            #     case 1:
-            #         author_name = input('Enter author name ')
-            #         self.data_provider.add_author(author_name)
-            #     case 2:
 
-
-
+            match action_item:
+                case 1:
+                    author_name = input('Enter author name ')
+                    author_id = self.data_provider.add_author(author_name)
+                    print(f"Author added id: {author_id}")
+                case 2:
+                    book_name = input('Enter book name ')
+                    publication_year = input('Enter publication year ')
+                    author_id = input('Enter author id ')
+                    book_id = self.data_provider.add_book(book_name, publication_year, author_id)
+                    print(f"Book added id: {book_id}")
 

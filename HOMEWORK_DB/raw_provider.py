@@ -8,9 +8,9 @@ class RawSqlProvider(DataProvider):
 
     @staticmethod
     def connect():
-        if not RawSqlProvider.connection or RawSqlProvider.connection.closed:
+        if not RawSqlProvider.connection or RawSqlProvider.connection.closed != 0:
             print('Create new connection')
-            RawSqlProvider.connection = psycopg.connect("dbname=console-app user=postgres password=postgres host=localhost")
+            RawSqlProvider.connection = psycopg.connect("dbname=console_app user=postgres password=postgres host=localhost")
             return RawSqlProvider.connection
 
         print('Use existing connections')
@@ -29,7 +29,6 @@ class RawSqlProvider(DataProvider):
         with RawSqlProvider.connect() as conn:
             with conn.cursor() as cur:
                 cur.execute(INSERT_AUTHOR, (name,))
-                result = cur.fetchone()
                 return cur.fetchone()[0]
 
     @staticmethod
@@ -42,16 +41,16 @@ class RawSqlProvider(DataProvider):
                 return cur.fetchone()[0]
 
     @staticmethod
-    def add_book_genre(genre_name):
+    def add_book_genre(book_id, genre_id):
         with RawSqlProvider.connect() as conn:
             with conn.cursor() as cur:
-                cur.execute(INSERT_BOOK_GENRE, (genre_name,))
-                return cur.fetchone()[0]
+                cur.execute(INSERT_BOOK_GENRE, (book_id, genre_id))
+                return cur.fetchone()
 
     @staticmethod
     def get_books_by_genre(genre_name):
         pass
 
     @staticmethod
-    def get_boks_by_author_add_year(author_name, year):
+    def get_books_by_author_and_year(author_name, year):
         pass

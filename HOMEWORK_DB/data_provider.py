@@ -1,10 +1,9 @@
 from abc import ABC, abstractmethod
 
-
 class DataProvider(ABC):
     @staticmethod
     @abstractmethod
-    def connect(cls):
+    def connect():
         pass
 
     @staticmethod
@@ -29,7 +28,7 @@ class DataProvider(ABC):
 
     @staticmethod
     @abstractmethod
-    def add_book_genre(genre_name):
+    def add_book_genre(book_id, genre_id):
         pass
 
     @staticmethod
@@ -39,5 +38,5 @@ class DataProvider(ABC):
 
     @staticmethod
     @abstractmethod
-    def get_boks_by_author_add_year(author_name, year):
+    def get_books_by_author_and_year(author_name, year):
         pass

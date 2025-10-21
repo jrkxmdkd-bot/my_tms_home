@@ -24,14 +24,14 @@ CREATE_BOOKS_TABLE = """
  """
 
 CREATE_BOOK_GENRES_TABLE = """
- CREATE TABLE IF NOT EXISTS book_genres (
-     book_id INT,
-     genre_id INT,
-     PRIMARY KEY (book_id, genre_id),
-     FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE,
-     FOREIGN KEY (genre_id) REFERENCES genres(genre_id) ON DELETE CASCADE
- );
- """
+CREATE TABLE IF NOT EXISTS book_genres (
+    book_id INT,
+    genre_id INT,
+    PRIMARY KEY (book_id, genre_id),
+    FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE,
+    FOREIGN KEY (genre_id) REFERENCES genres(genre_id) ON DELETE CASCADE
+);
+"""
 
 CREATE_TABLE_QUERIES = [CREATE_AUTHORS_TABLE, CREATE_GENRES_TABLE, CREATE_BOOKS_TABLE, CREATE_BOOK_GENRES_TABLE]
 
